@@ -18,13 +18,19 @@ module.exports = (sequelize, DataTypes) => {
     totalPrice: DataTypes.INTEGER,
     shipTo: DataTypes.STRING,
     orderNumber: DataTypes.INTEGER,
-    description: DataTypes.STRING,
+    description:
+    {
+      type: DataTypes.STRING,
+      validate: { max: 40 }
+    },
+
     returnDue:
     {
       type: DataTypes.STRING,
       validate: { notNull: true }
     },
     deliveryDate: DataTypes.STRING,
+
     totalOrders:
     {
       type: DataTypes.INTEGER,
