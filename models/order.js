@@ -19,10 +19,24 @@ module.exports = (sequelize, DataTypes) => {
     shipTo: DataTypes.STRING,
     orderNumber: DataTypes.INTEGER,
     description: DataTypes.STRING,
-    returnDue: DataTypes.STRING,
+    returnDue:
+    {
+      type: DataTypes.STRING,
+      validate: { notNull: true }
+    },
     deliveryDate: DataTypes.STRING,
-    totalOrders: DataTypes.INTEGER,
-    trackingId: DataTypes.INTEGER,
+    totalOrders:
+    {
+      type: DataTypes.INTEGER,
+      validate: { isInt: { msg: 'totalOrders mus be integer' } }
+    },
+
+    trackingId:
+    {
+      type: DataTypes.INTEGER,
+      validate: { notEmpty: true }
+    },
+    DataTypes.INTEGER,
     rateItem: DataTypes.INTEGER
   }, {
     sequelize,
