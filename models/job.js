@@ -14,14 +14,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Job.init({
-    jobTitle: DataTypes.STRING,
+    jobTitle:
+    {
+      type: DataTypes.STRING,
+      validate: { notNull: true }
+    },
     postedBy: DataTypes.STRING,
     jobDetails: DataTypes.STRING,
-    postedDate: DataTypes.INTEGER,
+    postedDate: {
+      type: DataTypes.INTEGER,
+      validate: { isInt: { msg: 'postDate must be in Integer' } }
+    },
     referenceOption: DataTypes.STRING,
     workLocation: DataTypes.STRING,
     remoteRole: DataTypes.STRING,
-    salary: DataTypes.INTEGER,
+    salary:
+    {
+      type: DataTypes.INTEGER,
+      allowNull: false
+
+    },
     benefits: DataTypes.STRING,
     scedule: DataTypes.STRING
   }, {
